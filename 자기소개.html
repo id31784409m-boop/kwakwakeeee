@@ -1,0 +1,914 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MINJI KWAK | NURSING PORTFOLIO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+ --blue:#83C9E9;
+ --light:#EAF7FD;
+ --navy:#204C69;
+ --deep:#246C94;
+ --text:#42677E;
+ --white:#FFFFFF;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+body {
+ font-family:'Noto Sans KR',sans-serif;
+ background:#F5FBFF;
+ color:var(--navy);
+ overflow:hidden;
+}
+button {font-family:inherit;cursor:pointer}
+.app {
+ height:100dvh;
+ display:flex;
+ flex-direction:column;
+ overflow:hidden;
+}
+
+/* HEADER */
+header {
+ height:70px;
+ flex-shrink:0;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:0 7%;
+ background:rgba(255,255,255,.95);
+ border-bottom:1px solid #E4F0F6;
+}
+.brand {
+ font-family:'DM Sans';
+ font-size:19px;
+ font-weight:800;
+ color:var(--deep);
+ cursor:pointer;
+}
+.brand span {color:var(--blue)}
+.header-right {
+ display:flex;
+ align-items:center;
+ gap:18px;
+}
+.page-number {
+ font-family:'DM Sans';
+ color:#8AAFC2;
+ font-size:12px;
+}
+.home-btn {
+ background:#EAF7FD;
+ border:0;
+ color:var(--deep);
+ border-radius:25px;
+ padding:10px 19px;
+ font-size:12px;
+ font-weight:700;
+}
+
+/* MAIN */
+main {
+ flex:1;
+ min-height:0;
+ position:relative;
+ overflow:hidden;
+}
+.screen {
+ position:absolute;
+ inset:0;
+ padding:35px 8%;
+ display:none;
+ animation:enter .45s ease;
+ overflow-y:auto;
+}
+.screen.active {display:flex}
+@keyframes enter {
+ from {opacity:0;transform:translateX(22px)}
+ to {opacity:1;transform:translateX(0)}
+}
+
+/* HOME */
+#home {
+ background:linear-gradient(125deg,#F5FBFF,#D9F1FC);
+ align-items:center;
+ justify-content:center;
+ gap:50px;
+}
+.home-content {max-width:600px}
+.tag {
+ color:#62A9CC;
+ font-family:'DM Sans';
+ font-size:11px;
+ font-weight:700;
+ letter-spacing:3px;
+ margin-bottom:20px;
+}
+.home-title {
+ font-family:'DM Sans';
+ font-size:clamp(55px,8vw,100px);
+ font-weight:800;
+ line-height:.98;
+ letter-spacing:-5px;
+ color:var(--navy);
+}
+.home-title span {color:#69B8DE}
+.home-desc {
+ margin-top:25px;
+ line-height:2;
+ font-size:14px;
+ color:#66879B;
+}
+.start-btn {
+ margin-top:32px;
+ background:var(--deep);
+ color:white;
+ border:0;
+ border-radius:40px;
+ padding:16px 32px;
+ font-size:13px;
+ font-weight:700;
+ box-shadow:0 8px 25px #246C9430;
+ transition:.3s;
+}
+.start-btn:hover {transform:translateY(-4px)}
+.home-art {
+ width:300px;
+ height:350px;
+ border-radius:160px 160px 35px 35px;
+ background:rgba(255,255,255,.7);
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ position:relative;
+ box-shadow:0 20px 60px #5A9EC022;
+}
+.nurse-icon {font-size:110px}
+.art-label {
+ position:absolute;
+ bottom:25px;
+ background:white;
+ padding:13px 23px;
+ border-radius:20px;
+ font-size:12px;
+ color:var(--deep);
+ font-weight:700;
+}
+
+/* MENU */
+#menu {
+ background:#F5FBFF;
+ flex-direction:column;
+ justify-content:center;
+}
+.heading {margin-bottom:30px}
+.heading small {
+ font-family:'DM Sans';
+ color:#72B8DA;
+ letter-spacing:3px;
+ font-weight:700;
+ font-size:11px;
+}
+.heading h2 {
+ font-size:35px;
+ margin:10px 0;
+ letter-spacing:-1px;
+}
+.heading p {
+ font-size:13px;
+ color:#8AA4B4;
+}
+.menu-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:17px;
+ max-width:1000px;
+ width:100%;
+}
+.menu-card {
+ border:1px solid #E1EFF6;
+ background:white;
+ border-radius:19px;
+ padding:25px;
+ text-align:left;
+ transition:.3s;
+ min-height:145px;
+ position:relative;
+}
+.menu-card:hover {
+ transform:translateY(-6px);
+ border-color:#8ACDEB;
+ box-shadow:0 12px 30px #5C9BB51A;
+}
+.menu-card .emoji {font-size:27px}
+.menu-card .num {
+ font-family:'DM Sans';
+ font-size:11px;
+ color:#9BCDE2;
+ margin-top:12px;
+}
+.menu-card h3 {
+ font-size:16px;
+ margin-top:5px;
+}
+.menu-card p {
+ color:#91A9B8;
+ font-size:11px;
+ margin-top:7px;
+}
+.arrow {
+ position:absolute;
+ right:22px;
+ top:25px;
+ color:#7FBBD8;
+}
+
+/* CONTENT PAGES */
+.content-page {
+ background:linear-gradient(135deg,#EFF9FD,#FFFFFF);
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+}
+.content-inner {
+ width:100%;
+ max-width:900px;
+}
+.page-label {
+ font-family:'DM Sans';
+ color:#77BADA;
+ font-size:11px;
+ letter-spacing:3px;
+ font-weight:700;
+}
+.content-inner h2 {
+ font-size:clamp(28px,4vw,43px);
+ margin:12px 0;
+ letter-spacing:-1.5px;
+}
+.intro {
+ font-size:13px;
+ color:#829DAD;
+ line-height:1.9;
+ margin-bottom:30px;
+}
+.content-box {
+ background:white;
+ border:1px solid #E5F1F6;
+ border-radius:22px;
+ padding:30px;
+ box-shadow:0 10px 35px #4C91AF0D;
+}
+.content-box h3 {
+ color:var(--deep);
+ font-size:20px;
+ margin-bottom:14px;
+}
+.content-box p {
+ color:#69889B;
+ font-size:13px;
+ line-height:2.1;
+ word-break:keep-all;
+}
+
+/* PROFILE */
+.info-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:13px;
+ margin-top:20px;
+}
+.info-card {
+ background:#F1F9FD;
+ padding:22px 15px;
+ border-radius:15px;
+ text-align:center;
+}
+.info-card .emoji {font-size:25px}
+.info-card small {
+ display:block;
+ font-size:10px;
+ color:#90ADBE;
+ margin-top:12px;
+}
+.info-card strong {
+ display:block;
+ font-size:14px;
+ margin-top:6px;
+}
+
+/* INTERESTS */
+.detail-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
+}
+.detail-card {
+ background:white;
+ border:1px solid #E4F0F6;
+ border-radius:18px;
+ padding:23px;
+ transition:.3s;
+}
+.detail-card:hover {
+ transform:translateY(-5px);
+ border-color:#91D1EB;
+}
+.detail-card .emoji {font-size:30px}
+.detail-card h3 {
+ font-size:15px;
+ margin:15px 0 9px;
+}
+.detail-card p {
+ font-size:12px;
+ color:#819BAA;
+ line-height:1.9;
+ word-break:keep-all;
+}
+
+/* STRENGTHS */
+.strength-list {
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:13px;
+}
+.strength {
+ display:flex;
+ align-items:flex-start;
+ gap:15px;
+ background:white;
+ border:1px solid #E4F0F6;
+ border-radius:15px;
+ padding:20px;
+}
+.strength b {
+ font-family:'DM Sans';
+ font-size:22px;
+ color:#80C7E7;
+}
+.strength h3 {
+ font-size:14px;
+ margin-bottom:7px;
+}
+.strength p {
+ color:#819BAA;
+ font-size:11px;
+ line-height:1.8;
+}
+
+/* VALUES */
+.value-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:13px;
+}
+.value-card {
+ background:white;
+ border:1px solid #E4F0F6;
+ border-radius:17px;
+ padding:22px 13px;
+ text-align:center;
+}
+.value-card .emoji {font-size:30px}
+.value-card h3 {
+ font-size:14px;
+ margin:12px 0 7px;
+}
+.value-card p {
+ font-size:11px;
+ color:#819BAA;
+ line-height:1.8;
+}
+
+/* GOAL */
+.goal-box {
+ background:linear-gradient(130deg,#D7F0FA,#F0FAFE);
+ border:1px solid white;
+ border-radius:25px;
+ padding:45px 30px;
+ text-align:center;
+}
+.goal-box .big-heart {font-size:48px}
+.goal-box h3 {
+ font-size:clamp(22px,4vw,34px);
+ line-height:1.6;
+ margin:18px 0;
+}
+.goal-box p {
+ font-size:13px;
+ color:#64879B;
+ line-height:2;
+}
+.keywords {
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:9px;
+ margin-top:23px;
+}
+.keywords span {
+ background:white;
+ padding:10px 15px;
+ border-radius:25px;
+ font-size:10px;
+ font-weight:700;
+ color:var(--deep);
+}
+
+/* FOOTER */
+footer {
+ height:58px;
+ flex-shrink:0;
+ background:white;
+ border-top:1px solid #E4F0F6;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 7%;
+}
+.footer-text {
+ color:#9BB1BE;
+ font-size:10px;
+}
+.page-controls {
+ display:flex;
+ gap:9px;
+}
+.page-controls button {
+ border:1px solid #DDECF3;
+ background:white;
+ color:var(--deep);
+ border-radius:25px;
+ padding:9px 17px;
+ font-size:11px;
+ font-weight:600;
+}
+.page-controls button:hover {background:#EAF7FD}
+
+/* MOBILE */
+@media(max-width:700px) {
+ header {height:60px;padding:0 5%}
+ .screen {padding:25px 6%}
+ #home {
+  flex-direction:column;
+  gap:30px;
+  justify-content:center;
+ }
+ .home-title {font-size:65px}
+ .home-art {
+  width:180px;
+  height:175px;
+  border-radius:90px 90px 25px 25px;
+ }
+ .nurse-icon {font-size:65px}
+ .art-label {bottom:10px;padding:8px 15px;font-size:10px}
+ .menu-grid {grid-template-columns:1fr 1fr;gap:10px}
+ .menu-card {padding:17px;min-height:125px}
+ .menu-card h3 {font-size:13px}
+ .menu-card p {font-size:10px}
+ .menu-card .emoji {font-size:23px}
+ .heading h2 {font-size:27px}
+ .info-grid {grid-template-columns:1fr 1fr}
+ .detail-grid {grid-template-columns:1fr}
+ .strength-list {grid-template-columns:1fr}
+ .value-grid {grid-template-columns:1fr 1fr}
+ .content-box {padding:22px}
+ footer {padding:0 5%}
+ .footer-text {font-size:9px}
+}
+@media(max-height:650px) {
+ .screen {padding-top:15px;padding-bottom:15px}
+ .home-art {height:230px}
+ .home-title {font-size:60px}
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<header>
+ <div class="brand" onclick="go('home')">MINJI<span>.</span></div>
+ <div class="header-right">
+  <span class="page-number" id="pageNumber">WELCOME / 00</span>
+  <button class="home-btn" onclick="go('home')">⌂ HOME</button>
+ </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section class="screen active" id="home">
+ <div class="home-content">
+  <div class="tag">NURSING STUDENT · 2026</div>
+  <h1 class="home-title">CARE<br>WITH<br><span>HEART.</span></h1>
+  <p class="home-desc">
+   안녕하세요. 환자의 마음까지 돌보는<br>
+   따뜻하고 전문적인 간호사를 꿈꾸는<br>
+   간호학과 2학년 곽민지입니다.
+  </p>
+  <button class="start-btn" onclick="go('menu')">
+   START MY JOURNEY →
+  </button>
+ </div>
+
+ <div class="home-art">
+  <div class="nurse-icon">🩺</div>
+  <div class="art-label">MINJI KWAK · FUTURE NURSE</div>
+ </div>
+</section>
+
+<!-- MENU -->
+<section class="screen" id="menu">
+ <div class="heading">
+  <small>EXPLORE MY WORLD</small>
+  <h2>Discover My Nursing Story</h2>
+  <p>궁금한 항목을 클릭해 저의 이야기를 만나보세요.</p>
+ </div>
+
+ <div class="menu-grid">
+
+  <button class="menu-card" onclick="go('profile')">
+   <div class="emoji">👩🏻‍⚕️</div>
+   <div class="num">01 / PROFILE</div>
+   <h3>Profile</h3>
+   <p>나의 기본 정보</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="menu-card" onclick="go('about')">
+   <div class="emoji">💙</div>
+   <div class="num">02 / ABOUT ME</div>
+   <h3>About Me</h3>
+   <p>나의 가치관과 이야기</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="menu-card" onclick="go('interests')">
+   <div class="emoji">🔬</div>
+   <div class="num">03 / INTERESTS</div>
+   <h3>Interests</h3>
+   <p>간호 관련 관심 분야</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="menu-card" onclick="go('strengths')">
+   <div class="emoji">✨</div>
+   <div class="num">04 / STRENGTHS</div>
+   <h3>Strengths</h3>
+   <p>나의 간호 역량과 강점</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="menu-card" onclick="go('values')">
+   <div class="emoji">🤍</div>
+   <div class="num">05 / NURSING VALUES</div>
+   <h3>Nursing Values</h3>
+   <p>내가 생각하는 간호의 가치</p>
+   <span class="arrow">↗</span>
+  </button>
+
+  <button class="menu-card" onclick="go('goal')">
+   <div class="emoji">🌟</div>
+   <div class="num">06 / MY GOAL</div>
+   <h3>My Goal</h3>
+   <p>미래의 전문 간호사</p>
+   <span class="arrow">↗</span>
+  </button>
+
+ </div>
+</section>
+
+<!-- PROFILE -->
+<section class="screen content-page" id="profile">
+ <div class="content-inner">
+  <div class="page-label">01 / PROFILE</div>
+  <h2>Nice to meet you!</h2>
+  <p class="intro">예비 간호사 곽민지를 소개합니다.</p>
+
+  <div class="content-box">
+   <h3>I'm Minji Kwak. 💙</h3>
+   <p>
+    안녕하세요. 사람을 이해하고 따뜻한 돌봄을 실천하는
+    간호사를 꿈꾸는 간호학과 2학년 곽민지입니다.
+    끊임없이 배우고 성장하며 환자에게 신뢰를 줄 수 있는
+    간호사가 되기 위해 노력하고 있습니다.
+   </p>
+
+   <div class="info-grid">
+    <div class="info-card">
+     <div class="emoji">👩🏻‍⚕️</div>
+     <small>NAME</small>
+     <strong>곽민지</strong>
+    </div>
+    <div class="info-card">
+     <div class="emoji">🎓</div>
+     <small>MAJOR</small>
+     <strong>간호학과 2학년</strong>
+    </div>
+    <div class="info-card">
+     <div class="emoji">💙</div>
+     <small>CORE VALUE</small>
+     <strong>Care & Empathy</strong>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ABOUT -->
+<section class="screen content-page" id="about">
+ <div class="content-inner">
+  <div class="page-label">02 / ABOUT ME</div>
+  <h2>Who I am</h2>
+  <p class="intro">저를 가장 잘 표현하는 가치는 이해와 공감입니다.</p>
+
+  <div class="content-box">
+   <h3>좋은 간호는 사람을 이해하는 것에서 시작됩니다.</h3>
+   <p>
+    저는 사람과 소통하고 서로의 마음을 이해하는 과정에
+    가치를 두고 있습니다.
+    <br><br>
+    간호학을 배우면서 간호는 단순히 질병을 치료하는
+    기술을 넘어 환자의 불안과 걱정까지 살피는
+    전인적인 돌봄이라는 것을 느끼고 있습니다.
+    <br><br>
+    환자마다 다른 상황과 필요를 이해하고,
+    작은 변화에도 관심을 기울이는 간호사가 되고 싶습니다.
+    아직 배워야 할 것이 많지만 매 순간 성실하게 배우고
+    성장하며 환자 한 사람 한 사람을 존중하겠습니다.
+   </p>
+   <br>
+   <p style="color:#246C94;font-weight:700">
+    "환자를 질병이 아닌 한 사람으로 바라보는 간호."
+   </p>
+  </div>
+ </div>
+</section>
+
+<!-- INTERESTS -->
+<section class="screen content-page" id="interests">
+ <div class="content-inner">
+  <div class="page-label">03 / INTERESTS</div>
+  <h2>My Nursing Interests</h2>
+  <p class="intro">제가 배우고 발전시키고 싶은 간호 분야입니다.</p>
+
+  <div class="detail-grid">
+   <div class="detail-card">
+    <div class="emoji">🫶🏻</div>
+    <h3>Patient-centered Care</h3>
+    <p>
+     환자의 신체적 상태뿐 아니라 정서적 상태와
+     개인의 상황까지 이해하는 환자 중심 간호에 관심이 있습니다.
+    </p>
+   </div>
+
+   <div class="detail-card">
+    <div class="emoji">🛡️</div>
+    <h3>Patient Safety</h3>
+    <p>
+     정확한 간호 수행과 세심한 관찰을 통해
+     환자 안전을 지키고 의료사고를 예방하는
+     방법에 관심이 있습니다.
+    </p>
+   </div>
+
+   <div class="detail-card">
+    <div class="emoji">💻</div>
+    <h3>Digital Healthcare</h3>
+    <p>
+     디지털 기술과 의료 정보 시스템이
+     간호의 효율성과 환자 건강 관리에
+     기여하는 방법을 배우고 싶습니다.
+    </p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="screen content-page" id="strengths">
+ <div class="content-inner">
+  <div class="page-label">04 / STRENGTHS</div>
+  <h2>My Strengths</h2>
+  <p class="intro">간호사로 성장하는 데 도움이 될 저의 다섯 가지 강점입니다.</p>
+
+  <div class="strength-list">
+   <div class="strength">
+    <b>01</b>
+    <div>
+     <h3>책임감 · Responsibility</h3>
+     <p>맡은 역할을 끝까지 수행하고 작은 일도 소홀히 하지 않으려 노력합니다.</p>
+    </div>
+   </div>
+
+   <div class="strength">
+    <b>02</b>
+    <div>
+     <h3>공감 능력 · Empathy</h3>
+     <p>상대방의 입장에서 생각하고 감정을 이해하려고 노력합니다.</p>
+    </div>
+   </div>
+
+   <div class="strength">
+    <b>03</b>
+    <div>
+     <h3>경청 · Listening</h3>
+     <p>상대방의 이야기를 주의 깊게 듣고 필요한 부분을 이해하려 합니다.</p>
+    </div>
+   </div>
+
+   <div class="strength">
+    <b>04</b>
+    <div>
+     <h3>관찰력 · Observation</h3>
+     <p>주변의 작은 변화와 세부적인 부분에도 관심을 기울입니다.</p>
+    </div>
+   </div>
+
+   <div class="strength">
+    <b>05</b>
+    <div>
+     <h3>꾸준함 · Consistency</h3>
+     <p>배운 내용을 반복해서 익히고 부족한 점을 개선하기 위해 노력합니다.</p>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- NURSING VALUES -->
+<section class="screen content-page" id="values">
+ <div class="content-inner">
+  <div class="page-label">05 / NURSING VALUES</div>
+  <h2>What Nursing Means to Me</h2>
+  <p class="intro">제가 간호사로서 중요하게 생각하는 다섯 가지 가치입니다.</p>
+
+  <div class="value-grid">
+   <div class="value-card">
+    <div class="emoji">🤍</div>
+    <h3>존중 · Respect</h3>
+    <p>모든 환자를 고유한 인격체로 존중합니다.</p>
+   </div>
+
+   <div class="value-card">
+    <div class="emoji">🫶🏻</div>
+    <h3>공감 · Empathy</h3>
+    <p>환자의 감정과 어려움에 귀 기울입니다.</p>
+   </div>
+
+   <div class="value-card">
+    <div class="emoji">🤝</div>
+    <h3>신뢰 · Trust</h3>
+    <p>정확하고 진실한 태도로 믿음을 형성합니다.</p>
+   </div>
+
+   <div class="value-card">
+    <div class="emoji">📚</div>
+    <h3>전문성 · Expertise</h3>
+    <p>끊임없이 학습하며 전문적인 역량을 키웁니다.</p>
+   </div>
+
+   <div class="value-card">
+    <div class="emoji">🌱</div>
+    <h3>생명 존중 · Life</h3>
+    <p>모든 생명의 가치와 존엄성을 소중히 여깁니다.</p>
+   </div>
+
+   <div class="value-card">
+    <div class="emoji">🛡️</div>
+    <h3>환자 안전 · Safety</h3>
+    <p>안전하고 정확한 간호를 최우선으로 생각합니다.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- GOAL -->
+<section class="screen content-page" id="goal">
+ <div class="content-inner">
+  <div class="page-label">06 / MY GOAL</div>
+  <h2>My Future, My Promise</h2>
+  <p class="intro">제가 꿈꾸는 간호사의 모습입니다.</p>
+
+  <div class="goal-box">
+   <div class="big-heart">💙</div>
+   <h3>
+    "환자에게 가장 먼저<br>
+    믿음을 주는 간호사가 되겠습니다."
+   </h3>
+
+   <p>
+    전문적인 간호 지식과 정확한 간호 술기를 갖추는 것은 물론,
+    환자의 작은 목소리에도 귀 기울일 수 있는
+    따뜻한 마음을 가진 간호사로 성장하고 싶습니다.
+    <br><br>
+    환자가 가장 불안하고 힘든 순간에도
+    안심하고 의지할 수 있는 사람.
+    끊임없이 배우고 발전하며 환자의 신체와 마음을
+    함께 돌보는 전문 간호사가 되는 것이 저의 목표입니다.
+   </p>
+
+   <div class="keywords">
+    <span>PROFESSIONALISM</span>
+    <span>EMPATHY</span>
+    <span>TRUST</span>
+    <span>PATIENT SAFETY</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <div class="footer-text">
+  © 2026 MINJI KWAK · NURSING PORTFOLIO
+ </div>
+ <div class="page-controls">
+  <button onclick="previous()">← PREV</button>
+  <button onclick="next()">NEXT →</button>
+ </div>
+</footer>
+
+</div>
+
+<script>
+const pages = [
+ 'home',
+ 'menu',
+ 'profile',
+ 'about',
+ 'interests',
+ 'strengths',
+ 'values',
+ 'goal'
+];
+
+const labels = [
+ 'WELCOME / 00',
+ 'EXPLORE / 00',
+ 'PROFILE / 01',
+ 'ABOUT ME / 02',
+ 'INTERESTS / 03',
+ 'STRENGTHS / 04',
+ 'NURSING VALUES / 05',
+ 'MY GOAL / 06'
+];
+
+let current = 'home';
+
+function go(id) {
+ if(!pages.includes(id)) return;
+
+ document.getElementById(current).classList.remove('active');
+ current = id;
+
+ const screen = document.getElementById(id);
+ screen.classList.remove('active');
+ void screen.offsetWidth;
+ screen.classList.add('active');
+
+ document.getElementById('pageNumber').textContent =
+ labels[pages.indexOf(id)];
+}
+
+function next() {
+ let index = pages.indexOf(current);
+
+ if(current === 'home') {
+  go('menu');
+ } else if(current === 'menu') {
+  go('profile');
+ } else if(index >= 2 && index < pages.length-1) {
+  go(pages[index+1]);
+ } else if(current === 'goal') {
+  go('home');
+ }
+}
+
+function previous() {
+ let index = pages.indexOf(current);
+
+ if(current === 'home') return;
+ if(current === 'menu') {
+  go('home');
+ } else if(current === 'profile') {
+  go('menu');
+ } else {
+  go(pages[index-1]);
+ }
+}
+
+document.addEventListener('keydown', (e) => {
+ if(e.key === 'ArrowRight') next();
+ if(e.key === 'ArrowLeft') previous();
+});
+</script>
+
+</body>
+</html>
